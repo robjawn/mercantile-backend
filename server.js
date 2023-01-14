@@ -10,6 +10,9 @@ const mongoose = require("mongoose")
 //import middleware 
 const cors = require("cors")
 const morgan = require("morgan")
+//data & schemas
+const Item = require('./models/item')
+const Profile = require('./models/profile')
 
 //DB CONNECTION 
 mongoose.connect(MONGODB_URL, {
