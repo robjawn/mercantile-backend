@@ -17,7 +17,7 @@ const profileSchema = Schema({
 )
 
 // User Model
-const Item = mongoose.model('Profile', profileSchema);
+const Profile = mongoose.model('Profile', profileSchema);
 
 // Export User Model
 module.exports = Profile;
