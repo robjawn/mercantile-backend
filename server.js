@@ -20,7 +20,13 @@ mongoose.connection
     .on("open", () => console.log("You are connected to mongoose"))
     .on("close", () => console.log("You are disconnected from mongoose"))
     .on("error", (error) => console.log(error))
-
+    
+// MiddleWare
+////////////////////////////////
+app.use(cors()); // to prevent cors errors, open access to all origins
+app.use(morgan("dev")); // logging
+app.use(express.json()); // parse json bodies
 
 //Listener
 app.listen(PORT, () => console.log(`listening on PORT ${PORT}`))
+
