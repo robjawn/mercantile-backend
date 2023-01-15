@@ -12,7 +12,6 @@ const cors = require("cors")
 const morgan = require("morgan")
 //data & schemas
 const Item = require('./models/item')
-const Profile = require('./models/profile')
 
 //DB CONNECTION 
 mongoose.connect(MONGODB_URL, {
@@ -30,6 +29,56 @@ app.use(cors()); // to prevent cors errors, open access to all origins
 app.use(morgan("dev")); // logging
 app.use(express.json()); // parse json bodies
 
+//test route
+app.get("/", (req, res) => {
+    res.send("hello world")
+})
+
+//item index route
+app.get("/items", async (req, res) => {
+    try {
+        // send all people
+        res.json(await Item.find({}))
+    } catch (error) {
+        //send error
+        res.status(400).json(error)
+    }
+})
+
+//item create route
+app.post("/items", async (req, res) => {
+    try {
+        // send all people
+        res.json(await Item.find({}))
+    } catch (error) {
+        //send error
+        res.status(400).json(error)
+    }
+})
+
+//item delete route
+app.delete("/items/:id", async (req, res) => {
+    try {
+        //send all items
+        res.json(await Item.findByIdAndRemove(req.params.id))
+    } catch (error) {
+        //send error
+        res.status(400).json(error)
+    }
+})
+
+//item update route
+app.put("/items/:id", async (req, res) => {
+    try {
+        //send all items
+        res.json(
+            await Item.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        )
+    } catch (error) {
+        //send error
+        res.status(400).json(error)
+    }
+})
+
 //Listener
 app.listen(PORT, () => console.log(`listening on PORT ${PORT}`))
-
