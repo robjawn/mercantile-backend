@@ -49,7 +49,7 @@ app.get("/items", async (req, res) => {
 app.post("/items", async (req, res) => {
     try {
         // send all people
-        res.json(await Item.find({}))
+        res.json(await Item.create(req.body))
     } catch (error) {
         //send error
         res.status(400).json(error)
