@@ -6,7 +6,9 @@ const Schema = mongoose.Schema;
 const itemSchema = Schema({
     name: { type: String, required: true},
     description: { type: String, required: true},
-    image: { type: String}
+    condition: { type: String },
+    image: { type: String},
+    profile: { type: Schema.Types.ObjectId, ref: 'Profile' }
 }, 
     { timestamps: true }
 )

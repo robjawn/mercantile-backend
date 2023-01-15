@@ -10,8 +10,8 @@ const mongoose = require("mongoose")
 //import middleware 
 const cors = require("cors")
 const morgan = require("morgan")
-const Item = require("./models/item")
-
+//data & schemas
+const Item = require('./models/item')
 
 //DB CONNECTION 
 mongoose.connect(MONGODB_URI, {
@@ -32,29 +32,107 @@ app.use(cors()); // to prevent cors errors, open access to all origins
 app.use(morgan("dev")); // logging
 app.use(express.json()); // parse json bodies
 
-
-/////Routes 
+//test route
 app.get("/", (req, res) => {
-    res.send("hello world");
-});
+    res.send("hello world")
+})
 
-// //i believe this will add controller milddle ware and handles request and sends a response 
-// const itemController = require("./controllers/itemCtrlr");
-// app.use('/item', itemController ); 
-
-////index controller 
-//i
-app.get("/item", async (req, res) => {
+//item index route
+app.get("/items", async (req, res) => {
     try {
         // send all people
-        res.json(await Item.find({}));
+        res.json(await Item.find({}))
     } catch (error) {
         //send error
-        res.status(400).json(error);
+        res.status(400).json(error)
     }
-});
+})
 
-//c
+//item create route
+app.post("/items", async (req, res) => {
+    try {
+        // send all people
+        res.json(await Item.create(req.body))
+    } catch (error) {
+        //send error
+        res.status(400).json(error)
+    }
+})
+
+//item delete route
+app.delete("/items/:id", async (req, res) => {
+    try {
+        //send all items
+        res.json(await Item.findByIdAndRemove(req.params.id))
+    } catch (error) {
+        //send error
+        res.status(400).json(error)
+    }
+})
+
+//item update route
+app.put("/items/:id", async (req, res) => {
+    try {
+        //send all items
+        res.json(
+            await Item.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        )
+    } catch (error) {
+        //send error
+        res.status(400).json(error)
+    }
+})
+
+//test route
+app.get("/", (req, res) => {
+    res.send("hello world")
+})
+
+//item index route
+app.get("/items", async (req, res) => {
+    try {
+        // send all people
+        res.json(await Item.find({}))
+    } catch (error) {
+        //send error
+        res.status(400).json(error)
+    }
+})
+
+//item create route
+app.post("/items", async (req, res) => {
+    try {
+        // send all people
+        res.json(await Item.create(req.body))
+    } catch (error) {
+        //send error
+        res.status(400).json(error)
+    }
+})
+
+//item delete route
+app.delete("/items/:id", async (req, res) => {
+    try {
+        //send all items
+        res.json(await Item.findByIdAndRemove(req.params.id))
+    } catch (error) {
+        //send error
+        res.status(400).json(error)
+    }
+})
+
+//item update route
+app.put("/items/:id", async (req, res) => {
+    try {
+        //send all items
+        res.json(
+            await Item.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        )
+    } catch (error) {
+        //send error
+        res.status(400).json(error)
+    }
+})
+
 //Listener
 app.listen(PORT, () => console.log(`listening on PORT ${PORT}`))
-
