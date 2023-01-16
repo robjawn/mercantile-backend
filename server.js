@@ -1,7 +1,7 @@
 //Dependencies
 require("dotenv").config()
 //.env
-const { PORT = 4000, MONGODB_URI } = process.env
+const { PORT = 4000, MONGODB_URL } = process.env
 //express
 const express = require("express")
 const app = express()
@@ -14,7 +14,7 @@ const morgan = require("morgan")
 const Item = require('./models/item')
 
 //DB CONNECTION 
-mongoose.connect(MONGODB_URI, {
+mongoose.connect(MONGODB_URL, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
 })
