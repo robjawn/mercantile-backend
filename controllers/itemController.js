@@ -1,13 +1,13 @@
 /////INDUCES for items
 // PEOPLE INDEX ROUTE
 const express = require('express');
-const router = express.Router(); 
+const itemRouter = express.Router(); 
 const Item = require('../models/item');
-
-
+const Wanted = require('../models/wanted');
+const User = require('../models/user')
 
 //item index route
-app.get("/items", async (req, res) => {
+itemRouter.get("/", async (req, res) => {
     try {
         // send all people
         res.json(await Item.find({}))
@@ -18,7 +18,7 @@ app.get("/items", async (req, res) => {
 })
 
 //item create route
-app.post("/items", async (req, res) => {
+itemRouter.post("/", async (req, res) => {
     try {
         // send all people
         res.json(await Item.create(req.body))
@@ -29,7 +29,7 @@ app.post("/items", async (req, res) => {
 })
 
 //item delete route
-app.delete("/items/:id", async (req, res) => {
+itemRouter.delete("/:id", async (req, res) => {
     try {
         //send all items
         res.json(await Item.findByIdAndRemove(req.params.id))
@@ -40,7 +40,7 @@ app.delete("/items/:id", async (req, res) => {
 })
 
 //item update route
-app.put("/items/:id", async (req, res) => {
+itemRouter.put("/:id", async (req, res) => {
     try {
         //send all items
         res.json(
@@ -52,4 +52,4 @@ app.put("/items/:id", async (req, res) => {
     }
 })
 
-module.exports = router; //
+module.exports = itemRouter; 

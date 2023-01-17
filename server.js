@@ -12,6 +12,8 @@ const cors = require("cors")
 const morgan = require("morgan")
 //data & schemas
 const Item = require('./models/item')
+const Wanted = require('./models/wanted')
+const User = require('./models/user')
 
 //DB CONNECTION 
 mongoose.connect(MONGODB_URL, {
@@ -33,11 +35,12 @@ app.use(express.json()); // parse json bodies
 ////controllers for the routes///
 ////below is the watned controller test.
 
-const wantedController = require("./controllers/wantedCtrlr");
+const wantedController = require("./controllers/wantedController");
 app.use('/wanted', wantedController);
-const itemController = require("./controllers/itemCtrlr");
+const itemController = require("./controllers/itemController");
 app.use('/items', itemController);
-
+const userController = require("./controllers/userController")
+app.use('/user', userController)
 
 
 
