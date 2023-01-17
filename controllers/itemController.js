@@ -29,7 +29,7 @@ itemRouter.post("/", async (req, res) => {
 })
 
 //item delete route
-itemRouter.delete(":id", async (req, res) => {
+itemRouter.delete("/:id", async (req, res) => {
     try {
         //send all items
         res.json(await Item.findByIdAndRemove(req.params.id))
