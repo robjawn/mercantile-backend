@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router(); 
 const Wanted = require('../models/wanted');
 
+
+//index route
+
 router.get("/wanted", async (req, res) => {
     try {
         // send all wanted
