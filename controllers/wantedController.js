@@ -1,8 +1,8 @@
 const express = require('express');
-const router = express.Router(); 
+const wantedRouter = express.Router(); 
 const Wanted = require('../models/wanted');
 
-router.get("/wanted", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         // send all wanted
         res.json(await Wanted.find({}))
@@ -13,7 +13,7 @@ router.get("/wanted", async (req, res) => {
 })
 
 //Wanted create route
-router.post("/wanted", async (req, res) => {
+router.post("/", async (req, res) => {
     try {
         // send all wanted
         res.json(await Wanted.create(req.body))
@@ -24,7 +24,7 @@ router.post("/wanted", async (req, res) => {
 })
 
 //Wanted delete route
-router.delete("/wanted/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
     try {
         //send all wanted
         res.json(await Wanted.findByIdAndRemove(req.params.id))
@@ -35,7 +35,7 @@ router.delete("/wanted/:id", async (req, res) => {
 })
 
 //Wanted update route
-router.put("/wanted/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
     try {
         //send all wanted
         res.json(
