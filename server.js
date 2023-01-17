@@ -21,7 +21,7 @@ mongoose.connect(MONGODB_URL, {
 mongoose.connection
     .on("open", () => console.log("You are connected to mongoose"))
     .on("close", () => console.log("You are disconnected from mongoose"))
-    .on("error", (error) => console.log(error))
+    .on("error", (error) => console.log(" this is the error " + error))
     
 // MiddleWare
 ////////////////////////////////
@@ -29,56 +29,68 @@ app.use(cors()); // to prevent cors errors, open access to all origins
 app.use(morgan("dev")); // logging
 app.use(express.json()); // parse json bodies
 
+/////routes////
+////controllers for the routes///
+////below is the watned controller test.
+
+const watneController = require("./controllers/wantedCtrlr");
+app.use('/wanted', wantedController);
+const itemController = require("./controllers/itemCtrlr");
+app.use('/items', itemController);
+
+
+
+
 //test route
 app.get("/", (req, res) => {
     res.send("hello world")
 })
 
-//item index route
-app.get("/items", async (req, res) => {
-    try {
-        // send all people
-        res.json(await Item.find({}))
-    } catch (error) {
-        //send error
-        res.status(400).json(error)
-    }
-})
+// //item index route
+// app.get("/items", async (req, res) => {
+//     try {
+//         // send all people
+//         res.json(await Item.find({}))
+//     } catch (error) {
+//         //send error
+//         res.status(400).json(error)
+//     }
+// })
 
-//item create route
-app.post("/items", async (req, res) => {
-    try {
-        // send all people
-        res.json(await Item.create(req.body))
-    } catch (error) {
-        //send error
-        res.status(400).json(error)
-    }
-})
+// //item create route
+// app.post("/items", async (req, res) => {
+//     try {
+//         // send all people
+//         res.json(await Item.create(req.body))
+//     } catch (error) {
+//         //send error
+//         res.status(400).json(error)
+//     }
+// })
 
-//item delete route
-app.delete("/items/:id", async (req, res) => {
-    try {
-        //send all items
-        res.json(await Item.findByIdAndRemove(req.params.id))
-    } catch (error) {
-        //send error
-        res.status(400).json(error)
-    }
-})
+// //item delete route
+// app.delete("/items/:id", async (req, res) => {
+//     try {
+//         //send all items
+//         res.json(await Item.findByIdAndRemove(req.params.id))
+//     } catch (error) {
+//         //send error
+//         res.status(400).json(error)
+//     }
+// })
 
-//item update route
-app.put("/items/:id", async (req, res) => {
-    try {
-        //send all items
-        res.json(
-            await Item.findByIdAndUpdate(req.params.id, req.body, { new: true })
-        )
-    } catch (error) {
-        //send error
-        res.status(400).json(error)
-    }
-})
+// //item update route
+// app.put("/items/:id", async (req, res) => {
+//     try {
+//         //send all items
+//         res.json(
+//             await Item.findByIdAndUpdate(req.params.id, req.body, { new: true })
+//         )
+//     } catch (error) {
+//         //send error
+//         res.status(400).json(error)
+//     }
+// })
 
 //Listener
 app.listen(PORT, () => console.log(`listening on PORT ${PORT}`))

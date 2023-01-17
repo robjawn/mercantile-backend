@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-//Item Schema
+//Profile Schema
 const profileSchema = Schema({
     name: { type: String, required: true},
     about: { type: String},
