@@ -17,4 +17,4 @@ const wantedSchema = Schema({
 const Wanted = mongoose.model('Wanted', wantedSchema);
 
 // Export User Model
-module.exports = Item;
+module.exports = Wanted;
