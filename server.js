@@ -33,7 +33,7 @@ app.use(express.json()); // parse json bodies
 ////controllers for the routes///
 ////below is the watned controller test.
 
-const watneController = require("./controllers/wantedCtrlr");
+const wantedController = require("./controllers/wantedCtrlr");
 app.use('/wanted', wantedController);
 const itemController = require("./controllers/itemCtrlr");
 app.use('/items', itemController);
