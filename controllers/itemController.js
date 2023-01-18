@@ -18,7 +18,7 @@ itemRouter.get("/", async (req, res) => {
 })
 
 //item create route
-itemRouter.post("/", async (req, res) => {
+itemRouter.post("/new", async (req, res) => {
     try {
         // send all people
         res.json(await Item.create(req.body))
