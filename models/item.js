@@ -8,7 +8,8 @@ const itemSchema = Schema({
     description: { type: String, required: true},
     condition: { type: String },
     image: { type: String},
-    profile: { type: Schema.Types.ObjectId, ref: 'Profile' }
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
+    zipcode: { type: String }
 }, 
     { timestamps: true }
 )
