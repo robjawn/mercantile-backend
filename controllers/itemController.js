@@ -40,7 +40,7 @@ itemRouter.delete("/:id", async (req, res) => {
 })
 
 //item update route
-itemRouter.put("/:id", async (req, res) => {
+itemRouter.put("update/:id", async (req, res) => {
     try {
         //send all items
         res.json(
