@@ -50,11 +50,18 @@ app.use(morgan("dev")); // logging
 app.use(express.json()); // parse json bodies
 // Authentication/Authorization 
 app.use(async function(req, res, next) {
-    const token = req.get('Authorization');
-    if(token) {
-        const user = await getAuth().verifyIdToken(token.replace('Bearer ', ''))
-        console.log(user)
-    }
+   try{
+        const token = req.get('Authorization');
+        if(token) {
+            const user = await getAuth().verifyIdToken(token.replace('Bearer ', ''))
+            req.user = user
+        } else {
+            req.user = null
+        }
+   } catch (error) {
+        req.user = null
+   }
+
     next() // this function invokes the next middleware function in the middleware stack
 })
 
@@ -76,51 +83,6 @@ app.get("/", (req, res) => {
     res.send("hello world")
 })
 
-// //item index route
-// app.get("/items", async (req, res) => {
-//     try {
-//         // send all people
-//         res.json(await Item.find({}))
-//     } catch (error) {
-//         //send error
-//         res.status(400).json(error)
-//     }
-// })
-
-// //item create route
-// app.post("/items", async (req, res) => {
-//     try {
-//         // send all people
-//         res.json(await Item.create(req.body))
-//     } catch (error) {
-//         //send error
-//         res.status(400).json(error)
-//     }
-// })
-
-// //item delete route
-// app.delete("/items/:id", async (req, res) => {
-//     try {
-//         //send all items
-//         res.json(await Item.findByIdAndRemove(req.params.id))
-//     } catch (error) {
-//         //send error
-//         res.status(400).json(error)
-//     }
-// })
-
-// //item update route
-// app.put("/items/:id", async (req, res) => {
-//     try {
-//         //send all items
-//         res.json(
-//             await Item.findByIdAndUpdate(req.params.id, req.body, { new: true })
-//         )
-//     } catch (error) {
-//         //send error
-//         res.status(400).json(error)
-//     }
-// })
-
 //Listener
 app.listen(PORT, () => console.log(`listening on PORT ${PORT}`))
+
