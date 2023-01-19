@@ -3,6 +3,14 @@
 
 Mercantile helps you exchange items and services with others in your area! With an emphasis on reciprocity and mutual benefit, Mercantile is not an application for buying or selling items using currency. Instead, users are encouraged to barter whatever they would like to give for whatever they would like to get.
 
+With Mercantile, you can...
+
+* List an item for trade
+* View items on offer
+* View a "Wanted" board
+* Make a trade offer
+* Accept a trade offer
+
 ## Authors
 * Product Manager: [Claude Allen](https://github.com/7gsclaude)
 
