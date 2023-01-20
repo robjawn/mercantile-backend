@@ -1,10 +1,18 @@
-/////INDUCES for items
-// PEOPLE INDEX ROUTE
+//Dependencies
+const { PORT = 4000, MONGODB_URL, PRIVATE_KEY_ID, PRIVATE_KEY, CLIENT_ID } = process.env
 const express = require('express');
 const itemRouter = express.Router(); 
 const Item = require('../models/item');
 const Wanted = require('../models/wanted');
 const User = require('../models/user')
+const admin = require('firebase-admin')
+const { getAuth } = require('firebase-admin/auth')
+
+function isAuthenticated(req, res, next) {
+    if(req.user) return next()
+        res.status(401).json({ message: 'You must be logged in to do that'
+    })
+}
 
 //item index route
 itemRouter.get("/", async (req, res) => {
@@ -18,7 +26,7 @@ itemRouter.get("/", async (req, res) => {
 })
 
 //item create route
-itemRouter.post("/new", async (req, res) => {
+itemRouter.post("/new", isAuthenticated, async (req, res) => {
     try {
         // attach uid
         req.body.uid= req.user.uid

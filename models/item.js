@@ -11,7 +11,9 @@ const itemSchema = Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User' },
     zipcode: { type: String },
     type: { Boolean,
-    default: false }
+    default: false },
+    uid: { type: String }
+
 }, 
     { timestamps: true }
 )
