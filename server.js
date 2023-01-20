@@ -65,6 +65,12 @@ app.use(async function(req, res, next) {
     next() // this function invokes the next middleware function in the middleware stack
 })
 
+function isAuthenticated(req, res, next) {
+    if(req.user) return next()
+        res.status(401).json({ message: 'You must be logged in to do that'
+    })
+}
+
 /////routes////
 ////controllers for the routes///
 ////below is the watned controller test.
