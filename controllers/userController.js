@@ -7,7 +7,7 @@ const User = require('../models/user')
 
 userRouter.get("/", async (req, res) => {
     try {
-        // send all wanted
+        // send all 
         res.json(await User.find({}))
     } catch (error) {
         //send error

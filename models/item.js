@@ -9,7 +9,8 @@ const itemSchema = Schema({
     condition: { type: String },
     image: { type: String},
     user: { type: Schema.Types.ObjectId, ref: 'User' },
-    zipcode: { type: String }
+    zipcode: { type: String },
+    uid: { type: String }
 }, 
     { timestamps: true }
 )
