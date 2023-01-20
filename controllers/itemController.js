@@ -1,5 +1,4 @@
 //Dependencies
-const { PORT = 4000, MONGODB_URL, PRIVATE_KEY_ID, PRIVATE_KEY, CLIENT_ID } = process.env
 const express = require('express');
 const itemRouter = express.Router(); 
 const Item = require('../models/item');
