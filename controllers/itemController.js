@@ -28,7 +28,9 @@ itemRouter.get("/", async (req, res) => {
 //item create route
 itemRouter.post("/new", isAuthenticated, async (req, res) => {
     try {
-        req.body.uid = req.user.uid
+        // attach uid
+        req.body.uid= req.user.uid
+        ///send new item
         res.json(await Item.create(req.body))
     } catch (error) {
         //send error
