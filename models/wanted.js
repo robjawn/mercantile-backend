@@ -4,11 +4,12 @@ const Schema = mongoose.Schema;
 
 //Wanted Schema
 const wantedSchema = Schema({
-    name: { type: String, required: true},
-    description: { type: String, required: true},
-    condition: { type: String },
-    image: { type: String},
-    profile: { type: Schema.Types.ObjectId, ref: 'Profile' }
+    name: { type: String },
+    description: { type: String },
+    user: { type: String },
+    contact: { type: String },
+    zipcode: { type: String },
+    uid: { type: String }
 }, 
     { timestamps: true }
 )

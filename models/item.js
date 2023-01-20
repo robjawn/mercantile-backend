@@ -11,10 +11,7 @@ const itemSchema = Schema({
     user: { type: String },
     contact: { type: String },
     zipcode: { type: String },
-    type: { Boolean,
-    default: false },
     uid: { type: String }
-
 }, 
     { timestamps: true }
 )
