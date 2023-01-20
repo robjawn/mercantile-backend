@@ -18,7 +18,7 @@ itemRouter.get("/", async (req, res) => {
 })
 
 //item create route
-itemRouter.post("/", async (req, res) => {
+itemRouter.post("/new", async (req, res) => {
     try {
         // attach uid
         req.body.uid= req.user.uid
@@ -42,7 +42,7 @@ itemRouter.delete("/:id", async (req, res) => {
 })
 
 //item update route
-itemRouter.put("/:id", async (req, res) => {
+itemRouter.put("/update/:id", async (req, res) => {
     try {
         //send all items
         res.json(

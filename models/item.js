@@ -4,14 +4,14 @@ const Schema = mongoose.Schema;
 
 //Item Schema
 const itemSchema = Schema({
-    name: { type: String, required: true },
-    description: { type: String, required: true },
+    name: { type: String },
+    description: { type: String },
     condition: { type: String },
     image: { type: String },
     user: { type: Schema.Types.ObjectId, ref: 'User' },
     zipcode: { type: String },
-   type: Boolean,
-    default: false
+    type: { Boolean,
+    default: false }
 }, 
     { timestamps: true }
 )
