@@ -16,7 +16,7 @@ With Mercantile, you can...
 
 * Lead Backend: [Robert Johnson](https://github.com/robjawn)
 
-* Lead Frontend: [June Jones](https://github.com/sailor-june)
+* Lead Frontend: [Juniper James](https://github.com/sailor-june)
 
 * Release Manager: [Reiny Botros](https://github.com/reinybo)
 

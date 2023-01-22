@@ -48,8 +48,10 @@ itemRouter.post("/new", isAuthenticated, async (req, res) => {
         req.body.uid = req.user.uid
         req.body.user = req.user.name
         req.body.contact = req.user.email
+        console.log(req.user)
         ///send new item
         res.json(await Item.create(req.body))
+        console.log(req.body)
     } catch (error) {
         //send error
         res.status(400).json(error)
